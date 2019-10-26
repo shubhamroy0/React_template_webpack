@@ -1,26 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 4200;
+const DIST_DIR = path.join(__dirname, '../dist');
+const HTML_FILE = path.join(DIST_DIR, 'index.html');
+app.use(express.static(DIST_DIR));
+app.get('/', (req, res) => {
+ res.sendFile(HTML_FILE);
+});
+app.listen(port, function () {
+ console.log('App listening on port: ' + port);
+});
