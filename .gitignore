@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+./dist/main.js
+./dist/main.js.map
+
 # testing
 /coverage
 
