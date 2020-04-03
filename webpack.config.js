@@ -8,11 +8,19 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: "main.js"
+        filename: "main.dev.js"
     },
-    plugins: [htmlPlugin],
+    plugins: [
+        htmlPlugin
+    ],
+    devtool: 'inline-source-map',
     module : {
         rules: [
+            {
+              test: /\.js$/,
+              use: ["source-map-loader"],
+              enforce: "pre"
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
